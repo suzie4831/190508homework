@@ -1,0 +1,16 @@
+<div class="navbar">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'new' %}">글쓰기</a>
+    <a href="#">수료증</a>
+</div>
+
+{% for blog in blogs.all %}
+<br>
+<div class="container">
+    <h1>{{ blog.title }}</h1>
+    <p>{{ blog.pub_date }}</p>
+    <p>{{ blog.summary }}<a href="{% url 'detail' blog.id %}">...more</a></p>
+    <p><a href="{% url 'delete' blog.id %}" style='text-decoration: none'>삭제</a></p>
+    <p><a href="{% url 'edit' blog.id %}" style='text-decoration: none'>수정</a></p>
+</div>
+{% endfor %}
